@@ -1,4 +1,4 @@
-import weatherSVG from "./img/weather.svg";
+// import weatherSVG from "./img/weather.svg";
 //display icon https://openweathermap.org/img/wn/${icon}.png
 function App() {
   return (
@@ -6,7 +6,7 @@ function App() {
       <section class="relative bg-gray-900  min-h-screen">
         <img
           class="w-56 lg:block lg:absolute top-0 left-0 pt-10"
-          src={weatherSVG}
+          src={""}
           alt="/"
         />
 
@@ -85,14 +85,7 @@ function App() {
       </section>
       {/* Footer */}
       <div class="text-center bg-red-900">
-        <p class="mb-4  text-gray-300">
-          Developed by
-          <span class="p-2 text-yellow-300">
-            <a href="https://www.youtube.com/channel/UCvu6J9q1AM6q4xysGqAvVyw">
-              i-Novotek
-            </a>
-          </span>
-        </p>
+        <p class="mb-4  text-gray-300">Cyklone Hateka</p>
         <a
           class="inline-flex text-blue-400 hover:text-blue-500 font-bold"
           href="https://www.youtube.com/channel/UCvu6J9q1AM6q4xysGqAvVyw"
