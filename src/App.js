@@ -1,29 +1,41 @@
-// import weatherSVG from "./img/weather.svg";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchWeatherAction } from "./redux/slices/weatherSlices";
+
+import { fetchCityAction } from "./redux/slices/citySlices";
 //display icon https://openweathermap.org/img/wn/${icon}.png
 function App() {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchCityAction("kumasi"));
+    dispatch(fetchWeatherAction());
+  }, []);
+
+  console.log(process.env.REACT_APP_API_KEY);
+
   return (
     <div>
-      <section class="relative bg-gray-900  min-h-screen">
+      <section className="relative bg-gray-900  min-h-screen pb-20">
         <img
-          class="w-56 lg:block lg:absolute top-0 left-0 pt-10"
+          className="w-56 lg:block lg:absolute top-0 left-0 pt-10"
           src={""}
           alt="/"
         />
 
-        <div class="relative container pt-12 px-4 mb-20 mx-auto text-center">
-          <span class="text-blue-500 font-semibold">
+        <div className="relative container pt-12 px-4 mb-20 mx-auto text-center">
+          <span className="text-blue-500 font-semibold">
             Built with react and redux
           </span>
-          <h2 class="mt-8 mb-8 lg:mb-12 text-white text-4xl lg:text-6xl font-semibold">
+          <h2 className="mt-8 mb-8 lg:mb-12 text-white text-4xl lg:text-6xl font-semibold">
             Weather App
           </h2>
-          <p class="max-w-3xl mx-auto mb-8 lg:mb-12 text-white text-xl opacity-50">
+          <p className="max-w-3xl mx-auto mb-8 lg:mb-12 text-white text-xl opacity-50">
             Find out the current weather situation around the world
           </p>
           {/* Input */}
           <input
             placeholder="Search City"
-            class="relative z-10 inline-block w-full md:w-auto mb-2  px-3 py-2 mr-4  font-medium leading-normal bg-transparent border-2 rounded-lg text-green-400 "
+            className="relative z-10 inline-block w-full md:w-auto mb-2  px-3 py-2 mr-4  font-medium leading-normal bg-transparent border-2 rounded-lg text-green-400 "
           ></input>
           {/* Button */}
           <button
@@ -34,31 +46,31 @@ function App() {
           </button>
         </div>
         {/* Content goes here */}
-        <div class="max-w-6xl px-4 mx-auto ">
-          <div class="flex flex-wrap -mx-4 justify-center">
-            <div class="w-full md:w-1/3 px-4">
-              <div class="p-8 border border-blue-800 rounded-lg">
-                <div class="flex justify-start  items-center">
-                  <span class="flex items-center justify-center w-16 h-16 rounded-full border-2">
+        <div className="max-w-6xl px-4 mx-auto ">
+          <div className="flex flex-wrap -mx-4 justify-center">
+            <div className="w-full md:w-1/3 px-4">
+              <div className="p-8 border border-blue-800 rounded-lg">
+                <div className="flex justify-start  items-center">
+                  <span className="flex items-center justify-center w-16 h-16 rounded-full border-2">
                     {/* weather logo */}
                     {/* <img
-                        class="w-56 "
+                        className="w-56 "
                         src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}@2x.png`}
                         alt="/"
                       /> */}
                   </span>
-                  <h1 class="text-gray-300 pl-5">
+                  <h1 className="text-gray-300 pl-5">
                     {/* {weather?.weather[0].main} */}
                   </h1>{" "}
                 </div>
-                <h1 class="text-gray-300 text-center text-4xl mb-10">
+                <h1 className="text-gray-300 text-center text-4xl mb-10">
                   {/* {Math.ceil(Number(weather?.main.temp))}{" "} */}
-                  <span class="text-yellow-500 text-4xl">°C</span>
+                  <span className="text-yellow-500 text-4xl">°C</span>
                 </h1>
-                <h3 class="mb-6 text-xl text-white font-semibold">
+                <h3 className="mb-6 text-xl text-white font-semibold">
                   {/* {weather?.name}, {weather?.sys?.country} */}
                 </h3>
-                <p class="mb-8 text-gray-300">
+                <p className="mb-8 text-gray-300">
                   {/* The weather condition in {weather?.name},{" "}
                     {weather?.sys?.country} is described as :{" "}
                     {weather?.weather[0].description} with a temperature of{" "}
@@ -66,13 +78,13 @@ function App() {
                     {weather?.main?.humidity} % */}
                 </p>
                 <a
-                  class="ml-auto flex items-center justify-center w-20 h-20 rounded-full  hover:bg-blue-700 text-white"
+                  className="ml-auto flex items-center justify-center w-20 h-20 rounded-full  hover:bg-blue-700 text-white"
                   href="#"
                 >
-                  <span class="flex items-center justify-center w-16 h-16 rounded-full border-2">
+                  <span className="flex items-center justify-center w-16 h-16 rounded-full border-2">
                     {/* weather logo */}
                     {/* <img
-                        class="w-56 "
+                        className="w-56 "
                         src={`https://openweathermap.org/img/wn/${weather?.weather[0].icon}.png`}
                         alt="/"
                       /> */}
@@ -84,15 +96,15 @@ function App() {
         </div>
       </section>
       {/* Footer */}
-      <div class="text-center bg-red-900">
-        <p class="mb-4  text-gray-300">Cyklone Hateka</p>
+      <div className="text-center bg-red-900">
+        <p className="mb-4  text-gray-300">CykloneHateka</p>
         <a
-          class="inline-flex text-blue-400 hover:text-blue-500 font-bold"
+          className="inline-flex text-blue-400 hover:text-blue-500 font-bold"
           href="https://www.youtube.com/channel/UCvu6J9q1AM6q4xysGqAvVyw"
         >
           <span className="mb-10">Watch the tutorial</span>
           <svg
-            class="ml-4 w-4 h-5"
+            className="ml-4 w-4 h-5"
             width="19"
             height="20"
             viewBox="0 0 19 20"
